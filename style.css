@@ -1,12 +1,163 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* style.css */
+
+/* Basic reset */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #333;
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header styling */
+.main-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(206, 206, 206);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* High z-index to ensure it's on top of all other elements */
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #ddd;
+}
+
+main {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* Repeater Container styling */
+.repeater-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Repeater Item styling */
+.repeater-item {
+    padding: 30px; /* Add padding inside each repeater item */
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px; /* Space between items */
+    position: relative;
+}
+
+/* Divider between repeater items */
+.repeater-item::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #ddd; /* Divider color */
+    position: absolute;
+    bottom: -7.5px; /* Half of the margin-bottom to center the divider */
+    left: 0;
+    right: 0;
+}
+
+/* Remove divider for the last item */
+.repeater-item:last-child::after {
+    display: none;
+}
+
+/* Styling for repeater links */
+.repeater-item a {
+    color: black; /* Set link text color to black */
+    text-decoration: none; /* Remove default underline */
+    border-bottom: 1px solid grey; /* Add a grey underline */
+    padding-bottom: 2px; /* Add some space between text and underline */
+    transition: border-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for links */
+.repeater-item a:hover {
+    border-bottom-color: darkgrey; /* Darken the underline on hover */
+}
+
+/* Scrollable row container */
+.scrollable-row {
+    display: flex; /* Flexbox layout for horizontal alignment */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 10px; /* Space between analysis boxes */
+    padding: 10px 0; /* Padding for spacing within the container */
+    width: 100%; /* Full width for scrollable container */
+    white-space: nowrap; /* Prevent line breaks inside the container */
+}
+
+/* Analysis box styling */
+.analysis-box {
+    min-width: 300px; /* Minimum width */
+    max-width: 500px; /* Allow width to expand to fill available space */
+    max-height: 300px; /* Fixed maximum height */
+    height: auto; /* Let height be determined by content */
+    border: 1px solid #ddd; /* Border for separation */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Add padding inside the box */
+    background-color: #f9f9f9; /* Background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: start; /* Align content at the top */
+    align-items: flex-start; /* Align items to the start */
+    font-size: 10px; /* Smaller font size for content */
+    text-align: left; /* Align text to the left */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds max-height */
+    white-space: normal; /* Allow text wrapping */
+    flex-grow: 1; /* Allows the box to expand to fill available space */
+}
+
+/* Styling for the unordered list in analysis box */
+.analysis-list {
+    padding-left: 15px; /* Indentation for bullet points */
+    margin: 5px 0 0;
+    list-style-type: disc; /* Default bullet style */
+    font-size: 10px; /* Adjust font size for readability */
+    line-height: 1.5; /* Increased line height for better readability */
+}
+
+/* Flex container for the first row */
+.analysis-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Align elements to the left and right */
+    align-items: center; /* Center vertically */
+    margin-bottom: 10px; /* Space between the header and the content */
+}
+
+/* Ticker styling */
+.analysis-header .ticker {
+    font-weight: bold;
+    font-size: 16px; /* Larger font size for prominence */
+}
+
+/* Outlook styling */
+.analysis-header .outlook {
+    font-size: 20px; /* Adjust font size */
+    color: #666; /* Grey color for the outlook */
 }
