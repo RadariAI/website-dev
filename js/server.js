@@ -1,4 +1,6 @@
-// script.js
+// server.js
+
+import { getSourceIcon, getSourceName } from './sourceIcons.js';
 
 // Function to fetch articles from the API
 async function getAllArticles() {
@@ -36,6 +38,36 @@ function createRepeaterItem(article) {
     const item = document.createElement('div');
     item.className = 'repeater-item';
 
+    // Create a container for the source info row
+    const sourceInfoContainer = document.createElement('div');
+    sourceInfoContainer.className = 'source-info-row'; // Class for styling the source info row
+    sourceInfoContainer.style.display = 'flex';
+    sourceInfoContainer.style.alignItems = 'center'; // Center align items vertically
+
+    // Get the source icon element
+    const sourceIconElement = getSourceIcon(article.news_english.source);
+
+    // Append the source icon element if it exists
+    if (sourceIconElement) {
+        sourceInfoContainer.appendChild(sourceIconElement);
+    }
+
+    // Get the source name text
+    const sourceNameText = getSourceName(article.news_english.source);
+
+    // Create a span element for the source name
+    const sourceNameSpan = document.createElement('span');
+    sourceNameSpan.textContent = sourceNameText;
+    sourceNameSpan.style.marginLeft = '10px'; // Add some spacing between the icon and name
+    sourceNameSpan.style.fontSize = '14px'; // Font size for source name
+    sourceNameSpan.style.color = '#333'; // Set color for better visibility
+
+    // Append the source name span to the source info container
+    sourceInfoContainer.appendChild(sourceNameSpan);
+
+    // Append the source info container to the repeater item
+    item.appendChild(sourceInfoContainer);
+
     // Create a link element for the article title
     const link = document.createElement('a');
     link.textContent = article.news_english.title || 'No Title Available';
@@ -51,7 +83,7 @@ function createRepeaterItem(article) {
     scrollableRow.className = 'scrollable-row';
 
     // Add analysis boxes to the scrollable row
-    article.analyses.forEach((analysis, index) => {
+    article.analyses.forEach((analysis) => {
         const analysisBox = createAnalysisBox(analysis);
         scrollableRow.appendChild(analysisBox);
     });
@@ -124,7 +156,7 @@ function createAnalysisBox(analysis) {
 }
 
 // Function to load articles and build the repeater
-async function loadArticles() {
+export async function loadArticles() {
     const articles = await getAllArticles();
     const repeaterContainer = document.getElementById('article-repeater');
 
@@ -137,6 +169,3 @@ async function loadArticles() {
         repeaterContainer.appendChild(repeaterItem);
     });
 }
-
-// Load articles when the page loads
-document.addEventListener('DOMContentLoaded', loadArticles);
