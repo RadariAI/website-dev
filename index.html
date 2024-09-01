@@ -27,7 +27,45 @@
     <!-- Repeater Container -->
     <main>
         <h1>Featured Articles</h1>
+
+        <!-- Checkbox Filters for Sources -->
+        <div id="source-filters" class="source-filters">
+            <label>
+                <input type="checkbox" id="read-all" name="source" value="all" checked>
+                Read All
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="yahoo.com">
+                Yahoo Finance
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="am730.com">
+                am730
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="hk01.com">
+                HK01
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="finnhub.io">
+                Finnhub
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="hkej.com">
+                HKEJ
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="hket.com">
+                HKET
+            </label>
+            <label>
+                <input type="checkbox" name="source" value="mingpao.com">
+                Mingpao
+            </label>
+        </div>
+
         <div id="article-repeater" class="repeater-container"></div>
+        <button id="load-more-btn">Load More</button> <!-- Load More button -->
     </main>
 
     <script type="module" src="js/main.js"></script>
